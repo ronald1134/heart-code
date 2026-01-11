@@ -3,9 +3,7 @@ import styled from 'styled-components';
 type ParallaxProps = {
     bg: string;
     height?: string;
-};
-
-
+}
 
 // export const Parallax = styled.section<ParallaxProps>`
 //   height: ${({ height }) => height || '100vh'};
@@ -43,11 +41,15 @@ export const Parallax = styled.section<ParallaxProps>`
 `;
 
 export const ParallaxContent = styled.div`
+  height: 15rem;
+
   position: relative;
   z-index: 1;
   text-align: center;
   color: #fff;
   animation: fadeUp 1s ease;
+
+  border: 1px solid red;
 
   h1 {
     font-size: 3rem;
@@ -78,6 +80,8 @@ export const ParallaxContent = styled.div`
 `;
 
 export const Container = styled.main`
+  height: 25rem;
+  border: 1px solid blue;
   padding: 4rem 3rem;
   background: ${({ theme }) => theme.colors.background};
 `;
@@ -86,4 +90,12 @@ export const Grid = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
+`;
+
+export const Footer = styled.footer`
+  padding: 2rem;
+  text-align: center;
+  background: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.secondary};
+  font-size: 0.9rem;
 `;
