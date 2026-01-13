@@ -11,8 +11,10 @@ import couple4 from '../../assets/images/couple4.png';
 import parallax1 from '../../assets/images/parallax-1.jpg';
 import parallax2 from '../../assets/images/parallax-2.jpg';
 import parallax3 from '../../assets/images/parallax-3.jpg';
+import { DaysTogether } from '../../components/DaysTogether';
 
 export function Home() {
+
     const templates = [
         { title: 'Nossa melhor foto', description: 'Esse momento ficou incrível ❤️', image: couple1 },
         { title: 'Piada interna', description: 'Lembra daquela vez que… 😂', image: couple2 },
@@ -26,6 +28,11 @@ export function Home() {
                 <ParallaxSection>
                     <h1>Oi, meu amor</h1>
                     <p>Tudo para ti pensando em você</p>
+                    <p>
+                        <DaysTogether
+                            since="2025-11-25"
+                        />
+                    </p>
                 </ParallaxSection>
             </Parallax>
 
@@ -45,11 +52,11 @@ export function Home() {
             </Parallax>
 
             <Parallax bg={parallax3} height="80vh" overlay={0.6}>
+            </Parallax>
                 <Footer>
                     <h2>Continua descendo…</h2>
                     <span>Tem mais coisas feitas com carinho ❤️</span>
                 </Footer>
-            </Parallax>
         </>
     );
 }

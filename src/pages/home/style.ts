@@ -5,17 +5,6 @@ type ParallaxProps = {
     height?: string;
 }
 
-// export const Parallax = styled.section<ParallaxProps>`
-//   height: ${({ height }) => height || '100vh'};
-//   background-image: url(${({ bg }) => bg});
-//   background-size: cover;
-//   background-position: center;
-//   background-attachment: fixed;
-
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
 export const Parallax = styled.section<ParallaxProps>`
   height: ${({ height }) => height || '100vh'};
   background-image: url(${({ bg }) => bg});
@@ -49,8 +38,6 @@ export const ParallaxContent = styled.div`
   color: #fff;
   animation: fadeUp 1s ease;
 
-  border: 1px solid red;
-
   h1 {
     font-size: 3rem;
     margin-bottom: 0.5rem;
@@ -81,7 +68,6 @@ export const ParallaxContent = styled.div`
 
 export const Container = styled.main`
   height: 25rem;
-  border: 1px solid blue;
   padding: 4rem 3rem;
   background: ${({ theme }) => theme.colors.background};
 `;
