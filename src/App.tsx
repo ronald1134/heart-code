@@ -6,6 +6,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 export function App() {
   return (
     <BrowserRouter>
+
       <Routes>
         <Route path="/" element={<Login />} />
 
@@ -21,3 +22,4 @@ export function App() {
     </BrowserRouter>
   );
 }
+

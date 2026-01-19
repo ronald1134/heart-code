@@ -2,23 +2,30 @@ import styled from 'styled-components';
 
 export const Content = styled.div`
     position: relative;
-    z-index: 1;
+    z-index: 2;
+
+    max-width: 960px;
+    padding: 0 1.5rem;
+
     text-align: center;
     color: #fff;
-    animation: fadeUp 1s ease;
+
+    animation: fadeUp 0.9s ease both;
 
     h1 {
-        font-size: 3rem;
+        font-size: clamp(2.4rem, 5vw, 3.5rem);
+        margin-bottom: 0.75rem;
     }
 
     h2 {
-        font-size: 2.2rem;
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        margin-bottom: 0.5rem;
     }
 
     p,
     span {
-        font-size: 1.2rem;
-        opacity: 0.9;
+        font-size: 1.1rem;
+        opacity: 0.95;
     }
 
     @keyframes fadeUp {
