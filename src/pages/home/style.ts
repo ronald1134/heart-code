@@ -1,87 +1,66 @@
 import styled from 'styled-components';
 
-type ParallaxProps = {
-    bg: string;
-    height?: string;
-}
+/* ===== CONTAINER PRINCIPAL ===== */
+export const Container = styled.main`
+  padding: 4rem 3rem;
+  background: ${({ theme }) => theme.colors.background};
 
-export const Parallax = styled.section<ParallaxProps>`
-  height: ${({ height }) => height || '100vh'};
-  background-image: url(${({ bg }) => bg});
-  background-size: cover;
-  background-position: top center;
-  background-attachment: fixed;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 3rem;
+
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+/* ===== SIDEBAR (COLUNA ESQUERDA) ===== */
+export const Sidebar = styled.aside`
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  backdrop-filter: blur(14px);
+  border-radius: 2rem;
+  padding: 2.5rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+`;
+
+/* ===== GRID DE CARDS ===== */
+export const Grid = styled.section`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 768px) {
-    background-attachment: scroll;
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-export const ParallaxContent = styled.div`
-  height: 15rem;
-
-  position: relative;
-  z-index: 1;
+/* ===== FOOTER NO PARALLAX FINAL ===== */
+export const Footer = styled.footer`
   text-align: center;
-  color: #fff;
-  animation: fadeUp 1s ease;
-
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-  }
+  color: ${({ theme }) => theme.colors.secondary};
 
   h2 {
     font-size: 2.2rem;
     margin-bottom: 0.5rem;
   }
 
-  p,
   span {
-    font-size: 1.2rem;
-    opacity: 0.9;
+    opacity: 0.85;
   }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
-
-export const Container = styled.main`
-  height: 25rem;
-  padding: 4rem 3rem;
-  background: ${({ theme }) => theme.colors.background};
-`;
-
-export const Grid = styled.section`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-`;
-
-export const Footer = styled.footer`
-  padding: 2rem;
-  text-align: center;
-  background: ${({ theme }) => theme.colors.surface};
-  color: ${({ theme }) => theme.colors.secondary};
-  font-size: 0.9rem;
 `;
