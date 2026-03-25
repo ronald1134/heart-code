@@ -24,6 +24,7 @@ type CardProps = {
 
 export const Card = styled.div<CardProps>`
   position: relative;
+  isolation: isolate;
   z-index: ${({ isOpen }) => (isOpen ? 20 : 1)};
 
   background: ${({ theme }) => theme.colors.surface};
@@ -50,6 +51,34 @@ export const Card = styled.div<CardProps>`
   }
 `;
 
+export const ImageWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+  border-radius: 1.4rem 1.4rem 0 0;
+  background: #000;
+`;
+
+export const ImageBackground = styled.img`
+    position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(12px) brightness(0.7);
+  transform: scale(1.2);
+`;
+
+export const ImageForeground = styled.img`
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`;
 
 export const Image = styled.img`
   width: 100%;
@@ -61,6 +90,8 @@ export const Image = styled.img`
 `;
 
 export const Content = styled.div`
+  position: relative;
+  z-index: 2;
   padding: 1rem;
   text-align: center;
 
@@ -77,37 +108,65 @@ export const Content = styled.div`
 `;
 
 export const MessageBox = styled.div`
-  position: absolute;
-  left: 50%;
-  bottom: -1rem;
-  transform: translateX(-50%) translateY(20px);
-  width: 90%;
+    position: absolute;
+  inset: 0;
+  z-index: 5; /* 🔥 chave da correção */
 
-  background: ${({ theme }) => theme.colors.surface};
-  border-radius: 12px;
-  padding: 1.2rem;
-  text-align: center;
+  background: linear-gradient(180deg, #0b0f1a, #070a13);
+  border-radius: 1.4rem;
+  padding: 2rem;
 
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
 
-  animation: riseIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-
-  p {
-    font-size: 0.95rem;
-    color: ${({ theme }) => theme.colors.secondary};
+  color: #fff;
+  cursor: pointer;
+  animation: fadeIn 0.4s ease;
+  span {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    animation: typing 0.4s ease;
   }
 
-  @keyframes riseIn {
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes typing {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+`;
+
+export const MessageText = styled.span`
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+  animation: fadeSlide 0.4s ease;
+
+  @keyframes fadeSlide {
     from {
       opacity: 0;
-      transform: translateX(-50%) translateY(40px);
+      transform: translateY(6px);
     }
     to {
       opacity: 1;
-      transform: translateX(-50%) translateY(0);
+      transform: translateY(0);
     }
   }
 `;
+
+export const Hint = styled.small`
+  margin-top: 12px;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+`;
+
 
 export const CloseButton = styled.button`
   margin-top: 0.8rem;
